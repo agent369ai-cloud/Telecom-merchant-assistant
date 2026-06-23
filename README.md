@@ -1,4 +1,4 @@
-rakuten-merchant-assistant/
+Telecom-merchant-assistant/
 │
 ├── requirements.txt            # Python dependencies
 ├── Dockerfile                  # Containerization for AKS
@@ -24,7 +24,7 @@ rakuten-merchant-assistant/
 
 
 # Clone or navigate into your repository base folder
-cd rakuten-merchant-assistant
+cd telecom-merchant-assistant
 
 # Create the virtual isolation folder
 python -m venv venv
