@@ -1,5 +1,8 @@
 venv/
+.venv/
+.langgrapfvenv/
 .env
 __pycache__/
 .pytest_cache/
 *.pyc
+evals/last_eval_report.json

@@ -1,15 +1,20 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 from langchain_core.messages import HumanMessage
 
 from app.agents.graph import agent_runtime
 
-api = FastAPI(title="Rakuten Merchant Support Engine API", version="1.0.0")
+api = FastAPI(title="Telecom Merchant Support Engine API", version="1.0.0")
 
 class ChatPayload(BaseModel):
     merchant_id: str
     tier: str
     message: str
+
+@api.get("/", include_in_schema=False)
+async def root():
+    return RedirectResponse(url="/docs")
 
 @api.get("/health")
 async def health_check():
@@ -33,7 +38,8 @@ async def process_merchant_intent(payload: ChatPayload):
         
         return {
             "merchant_id": payload.merchant_id,
-            "agent_response": final_system_message
+            "agent_response": final_system_message,
+            "faithfulness_ok": result_state.get("faithfulness_ok", None),
         }
         
     except Exception as ex:

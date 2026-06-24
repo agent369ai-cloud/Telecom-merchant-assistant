@@ -9,3 +9,5 @@ class MerchantAgentState(TypedDict):
     current_tier: str
     next_node: str
     is_compliant: bool
+    rag_context: str       # raw retrieved chunks, held for faithfulness validation
+    faithfulness_ok: bool  # set by validate_node
